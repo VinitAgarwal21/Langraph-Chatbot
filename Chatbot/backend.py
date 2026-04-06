@@ -11,7 +11,7 @@ load_dotenv()
 
 api_key =os.getenv("GOOGLE_GEMINIUS_API_KEY")
 
-llm = GoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0.7, google_api_key=api_key)
+llm = GoogleGenerativeAI(model="gemini-1.5-flash-preview", temperature=0.7, google_api_key=api_key)
 
 class ChatState(TypedDict):
    messages : Annotated[list[BaseMessage],add_messages] 
