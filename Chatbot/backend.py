@@ -1,6 +1,7 @@
 from langgraph.graph import StateGraph, START,END;
 from typing import TypedDict, Annotated
 from langchain_core.messages import BaseMessage
+from langchain_community.chat_models import ChatOllama
 from langchain_google_genai import GoogleGenerativeAI
 from langgraph.graph.message import add_messages
 from langgraph.checkpoint.memory import InMemorySaver
@@ -9,9 +10,9 @@ import os
 
 load_dotenv()
 
-api_key =os.getenv("GOOGLE_GEMINIUS_API_KEY")
+# api_key =os.getenv("GOOGLE_GEMINIUS_API_KEY")
 
-llm = GoogleGenerativeAI(model="gemini-1.5-flash-preview", temperature=0.7, google_api_key=api_key)
+llm = ChatOllama(model="llama3.2:1b", temperature=0.7)
 
 class ChatState(TypedDict):
    messages : Annotated[list[BaseMessage],add_messages] 
